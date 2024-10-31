@@ -3,7 +3,7 @@ import random
 class Detector:
 
     def __init__(self, adn):
-        self.__adn = adn
+        self.adn = adn
         self.__cantidad_mutantes_horizontales = 0
         self.__cantidad_mutantes_verticales = 0
         self.__cantidad_mutantes_diagonales = 0
@@ -14,27 +14,27 @@ class Detector:
     
     def mutante_horizontal(self):
     # Detectar mutante horizontal
-        for i in range(len(self.__adn)):
-            for j in range(len(self.__adn[i])-3):
-                if self.__adn[i][j] == self.__adn[i][j+1] == self.__adn[i][j+2] == self.__adn[i][j+3]:
+        for i in range(len(self.adn)):
+            for j in range(len(self.adn[i])-3):
+                if self.adn[i][j] == self.adn[i][j+1] == self.adn[i][j+2] == self.adn[i][j+3]:
                     self.__cantidad_mutantes_horizontales += 1
                     return True
         return False
 
     def mutante_vertical(self):
         # Detectar mutante vertical
-        for i in range(len(self.__adn)-3):
-            for j in range(len(self.__adn[i])):
-                if self.__adn[i][j] == self.__adn[i+1][j] == self.__adn[i+2][j] == self.__adn[i+3][j]:
+        for i in range(len(self.adn)-3):
+            for j in range(len(self.adn[i])):
+                if self.adn[i][j] == self.adn[i+1][j] == self.adn[i+2][j] == self.adn[i+3][j]:
                     self.__cantidad_mutantes_verticales += 1
                     return True
         return False
 
     def mutante_diagonal(self):
         # Detectar mutante diagonal
-        for i in range(len(self.__adn)-3):
-            for j in range(len(self.__adn[i])-3):
-                if self.__adn[i][j] == self.__adn[i+1][j+1] == self.__adn[i+2][j+2] == self.__adn[i+3][j+3]:
+        for i in range(len(self.adn)-3):
+            for j in range(len(self.adn[i])-3):
+                if self.adn[i][j] == self.adn[i+1][j+1] == self.adn[i+2][j+2] == self.adn[i+3][j+3]:
                     self.__cantidad_mutantes_diagonales += 1
                     return True
         return False
@@ -44,12 +44,14 @@ class Detector:
         return self.mutante_horizontal() or self.mutante_vertical() or self.mutante_diagonal()
     
     def imprimir_cantidad_mutantes(self):
+        # Imprime la cantidad de mutantes
         print("Cantidad de mutantes horizontales: ", self.__cantidad_mutantes_horizontales)
         print("Cantidad de mutantes verticales: ", self.__cantidad_mutantes_verticales)
         print("Cantidad de mutantes diagonales: ", self.__cantidad_mutantes_diagonales)
         
     def devolver_adn(self):
-        return self.__adn
+        # Devuelve el ADN
+        return self.adn
     
 class Mutador:
     def __init__(self, adn):
@@ -78,19 +80,24 @@ class Virus(Mutador):
         adn_mutada = []
         return adn_mutada
     
-class Sanador:
+class Sanador(Detector):
     def __init__(self, adn):
-        self.__adn = adn
+        super().__init__(adn)
+    
+    def verificar_mutantes(self):
+        return self.detectar_mutantes()
     
     def sanar_mutantes(self):
-        if(Detector(self.__adn).mutante_horizontal() or Detector(self.__adn).mutante_vertical() or Detector(self.__adn).mutante_diagonal()):
-            while(Detector(self.__adn).mutante_horizontal() or Detector(self.__adn).mutante_vertical() or Detector(self.__adn).mutante_diagonal()):
-                for i in range(len(self.__adn)):
-                    self.__adn[i] = [random.choice(['A', 'T', 'C', 'G']) for j in range(len(self.__adn[i]))]
-            return self.__adn
+        if(self.verificar_mutantes()):
+            # Crea una nueva matriz ADN aleatoria
+            while(self.verificar_mutantes()):
+                for i in range(len(self.adn)):
+                    self.adn[i] = [random.choice(['A', 'T', 'C', 'G']) for j in range(len(self.adn[i]))]
+            return self.adn
         else:
+            # Devuelve la misma matriz ADN
             print("No hay mutantes")
-            return self.__adn
+            return self.adn
     
     
     

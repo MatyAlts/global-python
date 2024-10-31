@@ -46,8 +46,8 @@ def imprimir_ADN(adn):
 
 def funcion_detectar(nombre):
     # Detectar mutantes
-    objetos_detector[nombre] = Detector(matrices[nombre])
     try:
+        objetos_detector[nombre] = Detector(matrices[nombre])
         if objetos_detector[nombre].detectar_mutantes():
             objetos_detector[nombre].imprimir_cantidad_mutantes()
         else:
@@ -59,8 +59,8 @@ def funcion_sanador(nombre):
     # Sanar mutantes
     try:
         objetos_sanador[nombre] = Sanador(matrices[nombre])
-    except Exception as e:
-        print("error: ", e)
+    except:
+        print("ADN no encontrado")
     else:
         objetos_detector[nombre] = objetos_sanador[nombre].sanar_mutantes()
         print("Mutante sanado")

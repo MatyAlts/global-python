@@ -3,7 +3,6 @@ from objetos import *
 from funciones import *
      
 def main():
-    adn = []
     while(True):
         print('''
             1. Ingresar ADN
@@ -14,11 +13,12 @@ def main():
             ''')
         opcion = input('Ingrese una opcion: ')
         if opcion == '1':
-            adn = ingresar_ADN()
+            ingresar_ADN()
         elif opcion == '2':
             funcion_detectar(input('Ingrese el nombre del ADN: '))
         elif opcion == '3':
-            Mutador.crear_mutante(adn)
+            #Mutador.crear_mutante(adn)
+            pass
         elif opcion == '4':
             funcion_sanador(input('Ingrese el nombre del ADN: '))
         elif opcion == '5':
