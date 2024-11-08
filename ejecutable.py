@@ -2,7 +2,7 @@ from clases import *
 from objetos import *
 from funciones import *
      
-def main():
+def main() -> None:
     while(True):
         print('''
             1. Ingresar ADN
@@ -17,11 +17,11 @@ def main():
         elif opcion == '2':
             funcion_detectar(input('Ingrese el nombre del ADN: '))
         elif opcion == '3':
-            #Mutador.crear_mutante(adn)
-            pass
+            funcion_mutacion(input('Ingrese el nombre del ADN: '))
         elif opcion == '4':
             funcion_sanador(input('Ingrese el nombre del ADN: '))
         elif opcion == '5':
+            print("Saliendo del programa...")
             break
         else:
             print("Opcion incorrecta, intente de nuevo")

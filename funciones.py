@@ -1,5 +1,5 @@
 from objetos import *
-def ingresar_ADN():
+def ingresar_ADN() -> None:
     # Ingresar el ADN
     adn = []
     print('''
@@ -22,7 +22,7 @@ def ingresar_ADN():
         
         imprimir_ADN(adn)
 
-def verificar_ADN(adn):
+def verificar_ADN(adn) -> bool:
     # Verificar si el ADN es correcto
     for i in range (len(adn)):
             if len(adn[i]) != 6:
@@ -35,7 +35,7 @@ def verificar_ADN(adn):
                             return False
     return True
 
-def imprimir_ADN(adn):
+def imprimir_ADN(adn) -> None:
     # Imprimir el ADN
     print("Su ADN: ")
     for i in range(len(adn)):
@@ -44,18 +44,65 @@ def imprimir_ADN(adn):
             print('\t', adn[i][j], end = " ")
         print('\t]')
 
-def funcion_detectar(nombre):
+def funcion_detectar(nombre) -> None:
     # Detectar mutantes
     try:
         objetos_detector[nombre] = Detector(matrices[nombre])
-        if objetos_detector[nombre].detectar_mutantes():
-            objetos_detector[nombre].imprimir_cantidad_mutantes()
-        else:
-            print("No es un mutante")
+        print(objetos_detector[nombre].detectar_mutantes())
     except:
         print("ADN no encontrado")
 
-def funcion_sanador(nombre):
+def funcion_mutacion(nombre) -> None:
+    # Crear mutantes
+    if nombre not in matrices:
+        print("ADN no encontrado")
+        return
+    base_nitrogenada = input("""
+                             Ingrese la base nitrogenada a mutar
+                             (A) Adenina (C) Citosina (G) Guanina (T) Timina
+                             """).upper()
+    
+    while(base_nitrogenada != 'A' and base_nitrogenada != 'C' and base_nitrogenada != 'G' and base_nitrogenada != 'T'):
+        print("Base nitrogenada invalida")
+        base_nitrogenada = input("""
+                             Ingrese la base nitrogenada a mutar
+                             (A) Adenina (C) Citosina (G) Guanina (T) Timina
+                             """).upper()
+        
+    orientacion_de_la_mutacion = input("""Ingrese la orientacion de la mutacion
+                                       Horizontal, Vertical, Diagonal
+                                       """).lower()
+    
+    while(orientacion_de_la_mutacion != 'horizontal' and orientacion_de_la_mutacion != 'vertical' and orientacion_de_la_mutacion != 'diagonal'):
+        print("Orientacion invalida")
+        orientacion_de_la_mutacion = input("""Ingrese la orientacion de la mutacion
+                                       Horizontal, Vertical, Diagonal
+                                       """).lower()
+    fila = int(input("Ingrese la fila de la mutacion"))-1
+    while(fila < 0 or fila > 5):
+        print("Fila invalida")
+        fila = input("Ingrese la fila de la mutacion")-1
+    columna = int(input("Ingrese la columna de la mutacion"))-1
+    while(columna < 0 or columna > 5):
+        print("Columna invalida")
+        columna = input("Ingrese la columna de la mutacion")-1
+    posicion_inicial = (fila, columna)
+    try:
+        if orientacion_de_la_mutacion == 'horizontal' or orientacion_de_la_mutacion == 'vertical':
+            objetos_radiacion[nombre] = Radiacion(matrices[nombre])
+            matrices[nombre] = objetos_radiacion[nombre].crear_mutante(base_nitrogenada, posicion_inicial, orientacion_de_la_mutacion)
+        else:
+            objetos_virus[nombre] = Virus(matrices[nombre])
+            matrices[nombre] = objetos_virus[nombre].crear_mutante(base_nitrogenada, posicion_inicial)
+    except ValueError:
+        print("La posición inicial y la longitud de la mutación exceden los límites de la matriz ADN.")
+    except Exception as e:
+        print("Error: ",e)
+    else:
+        print("Mutante creado")
+        imprimir_ADN(matrices[nombre])
+
+def funcion_sanador(nombre) -> None:
     # Sanar mutantes
     try:
         objetos_sanador[nombre] = Sanador(matrices[nombre])
