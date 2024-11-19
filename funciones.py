@@ -22,7 +22,7 @@ def ingresar_ADN() -> None:
         
         imprimir_ADN(adn)
 
-def verificar_ADN(adn) -> bool:
+def verificar_ADN(adn: list) -> bool:
     # Verificar si el ADN es correcto
     for i in range (len(adn)):
             if len(adn[i]) != 6:
@@ -35,7 +35,7 @@ def verificar_ADN(adn) -> bool:
                             return False
     return True
 
-def imprimir_ADN(adn) -> None:
+def imprimir_ADN(adn: list) -> None:
     # Imprimir el ADN
     print("Su ADN: ")
     for i in range(len(adn)):
@@ -44,7 +44,7 @@ def imprimir_ADN(adn) -> None:
             print('\t', adn[i][j], end = " ")
         print('\t]')
 
-def funcion_detectar(nombre) -> None:
+def funcion_detectar(nombre: str) -> None:
     # Detectar mutantes
     try:
         objetos_detector[nombre] = Detector(matrices[nombre])
@@ -52,7 +52,7 @@ def funcion_detectar(nombre) -> None:
     except:
         print("ADN no encontrado")
 
-def funcion_mutacion(nombre) -> None:
+def funcion_mutacion(nombre: str) -> None:
     # Crear mutantes
     if nombre not in matrices:
         print("ADN no encontrado")
@@ -87,6 +87,12 @@ def funcion_mutacion(nombre) -> None:
         print("Columna invalida")
         columna = input("Ingrese la columna de la mutacion")-1
     posicion_inicial = (fila, columna)
+    
+    if base_nitrogenada == 'A': base_nitrogenada = 0
+    elif base_nitrogenada == 'C': base_nitrogenada = 1 
+    elif base_nitrogenada == 'G': base_nitrogenada = 2 
+    elif base_nitrogenada == 'T': base_nitrogenada = 3
+    
     try:
         if orientacion_de_la_mutacion == 'horizontal' or orientacion_de_la_mutacion == 'vertical':
             objetos_radiacion[nombre] = Radiacion(matrices[nombre])
@@ -102,7 +108,7 @@ def funcion_mutacion(nombre) -> None:
         print("Mutante creado")
         imprimir_ADN(matrices[nombre])
 
-def funcion_sanador(nombre) -> None:
+def funcion_sanador(nombre: str) -> None:
     # Sanar mutantes
     try:
         objetos_sanador[nombre] = Sanador(matrices[nombre])
@@ -112,4 +118,18 @@ def funcion_sanador(nombre) -> None:
         objetos_detector[nombre] = objetos_sanador[nombre].sanar_mutantes()
         print("Mutante sanado")
         imprimir_ADN(objetos_detector[nombre])
+        
+def funcion_imprimir_ADN(nombre: str) -> None:
+    # Imprimir el ADN
+    try:
+        if nombre in matrices and nombre not in objetos_detector:
+            raise ValueError("Primero debe detectar el adn")
+        elif nombre not in matrices:
+            raise ValueError("ADN no encontrado")
+        else:
+            objetos_detector[nombre] = Detector(matrices[nombre])
+            print(objetos_detector[nombre])
+            
+    except Exception as e:
+        print("Error: ",e)
         

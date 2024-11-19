@@ -9,7 +9,8 @@ def main() -> None:
             2. Detectar mutantes
             3. Crear mutante
             4. Sanar mutantes
-            5. Salir
+            5. Imprimir ADN
+            6. Salir
             ''')
         opcion = input('Ingrese una opcion: ')
         if opcion == '1':
@@ -21,6 +22,8 @@ def main() -> None:
         elif opcion == '4':
             funcion_sanador(input('Ingrese el nombre del ADN: '))
         elif opcion == '5':
+            funcion_imprimir_ADN(input('Ingrese el nombre del ADN: '))
+        elif opcion == '6':
             print("Saliendo del programa...")
             break
         else:
