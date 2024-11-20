@@ -132,4 +132,3 @@ def funcion_imprimir_ADN(nombre: str) -> None:
             
     except Exception as e:
         print("Error: ",e)
-        
