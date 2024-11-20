@@ -16,5 +16,44 @@ Este programa permite ingresar matrices de ADN y realizar diferentes operaciones
 1. Abra una terminal en el directorio donde se encuentran los archivos.
 2. Ejecute el siguiente comando:
 
-   ```bash
-   python ejecutable.py
+```
+python ejecutable.py
+```
+
+## Funcionalidades del Programa
+1. Ingresar ADN
+Permite al usuario ingresar una matriz de ADN de 6x6. El ADN debe ser ingresado como una cadena de caracteres separada por comas, por ejemplo:
+
+```
+AGATCA, GATTCA, CAACAT, GAGCTA, ATTGCG, CTGTTC
+```
+
+El ADN ingresado se almacena en el diccionario `matrices` en objetos.py.
+
+2. Detectar Mutantes
+Permite detectar mutantes en una matriz de ADN previamente ingresada. El usuario debe ingresar el nombre del ADN que desea analizar. El resultado de la detección se imprime en pantalla, mostrando la cantidad de mutantes horizontales, verticales y diagonales.
+
+3. Crear Mutante
+Permite crear mutantes en una matriz de ADN previamente ingresada. El usuario debe ingresar el nombre del ADN, la base nitrogenada a mutar (A, C, G, T), la orientación de la mutación (horizontal, vertical, diagonal) y la posición inicial de la mutación (fila y columna). El ADN mutado se almacena en el diccionario `matrices` en objetos.py.
+
+4. Sanar Mutantes
+Permite sanar mutantes en una matriz de ADN previamente ingresada. El usuario debe ingresar el nombre del ADN que desea sanar. El ADN sanado se almacena en el diccionario `objetos_detector` en objetos.py.
+
+5. Imprimir ADN
+Permite imprimir una matriz de ADN previamente ingresada. El usuario debe ingresar el nombre del ADN que desea imprimir. El ADN se imprime en pantalla.
+
+6. Salir
+Permite salir del programa.
+
+Estructura del Código
+ejecutable.py
+Contiene la función `main` que presenta un menú al usuario y llama a las funciones correspondientes según la opción seleccionada.
+
+clases.py
+Contiene las clases `Detector`, `Mutador`, `Radiacion`, `Virus` y `Sanador` que implementan la lógica para detectar, crear y sanar mutantes en el ADN.
+
+funciones.py
+Contiene las funciones `ingresar_ADN`, `verificar_ADN`, `imprimir_ADN`, `funcion_detectar`, `funcion_mutacion`, `funcion_sanador` y `funcion_imprimir_ADN` que implementan las funcionalidades del programa.
+
+objetos.py
+Contiene los diccionarios `matrices`, `objetos_detector`, `objetos_radiacion`, `objetos_virus` y `objetos_sanador` que almacenan las matrices de ADN y los objetos creados durante la ejecución del programa.
