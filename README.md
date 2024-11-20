@@ -8,6 +8,7 @@
 - Pereyra Juan
 
 Trabajo integrador para la tecnicatura superior en programacion UTN-FRM
+
 Este programa permite ingresar matrices de ADN y realizar diferentes operaciones sobre ellas, como detectar mutantes, crear mutantes y sanar mutantes.
 
 ## Requisitos Previos
