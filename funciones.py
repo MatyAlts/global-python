@@ -78,14 +78,14 @@ def funcion_mutacion(nombre: str) -> None:
         orientacion_de_la_mutacion = input("""Ingrese la orientacion de la mutacion
                                        Horizontal, Vertical, Diagonal
                                        """).lower()
-    fila = int(input("Ingrese la fila de la mutacion"))-1
+    fila = int(input("Ingrese la fila de la mutacion: "))-1
     while(fila < 0 or fila > 5):
         print("Fila invalida")
-        fila = input("Ingrese la fila de la mutacion")-1
-    columna = int(input("Ingrese la columna de la mutacion"))-1
+        fila = int(input("Ingrese la fila de la mutacion: "))-1
+    columna = int(input("Ingrese la columna de la mutacion: "))-1
     while(columna < 0 or columna > 5):
         print("Columna invalida")
-        columna = input("Ingrese la columna de la mutacion")-1
+        columna = int(input("Ingrese la columna de la mutacion: "))-1
     posicion_inicial = (fila, columna)
     
     if base_nitrogenada == 'A': base_nitrogenada = 0
