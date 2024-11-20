@@ -1,5 +1,13 @@
-# Programa de Detección y Manipulación de Mutantes en ADN
+# <img src="icon.png" width="25" title="hover text"> Trabajo Global UTN Python
 
+## Integrantes
+
+- Torres Matias Santiago
+- Canciani Gianfranco
+- Leiva Julio
+- Pereyra Juan
+
+Trabajo integrador para la tecnicatura superior en programacion UTN-FRM
 Este programa permite ingresar matrices de ADN y realizar diferentes operaciones sobre ellas, como detectar mutantes, crear mutantes y sanar mutantes.
 
 ## Requisitos Previos
