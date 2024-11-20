@@ -57,3 +57,134 @@ Contiene las funciones `ingresar_ADN`, `verificar_ADN`, `imprimir_ADN`, `funcion
 
 objetos.py
 Contiene los diccionarios `matrices`, `objetos_detector`, `objetos_radiacion`, `objetos_virus` y `objetos_sanador` que almacenan las matrices de ADN y los objetos creados durante la ejecución del programa.
+
+## Ejemplo de Uso del Programa
+A continuación, se muestra un ejemplo de cómo utilizar el programa para ingresar un ADN, detectar mutantes, crear un mutante, sanar mutantes e imprimir el ADN.
+
+Paso 1: Ingresar ADN
+Ejecute el programa y seleccione la opción `1` para ingresar un ADN.
+```
+1. Ingresar ADN
+2. Detectar mutantes
+3. Crear mutante
+4. Sanar mutantes
+5. Imprimir ADN
+6. Salir
+
+Ingrese una opcion: 1
+```
+Ingrese el ADN en el formato especificado:
+```
+Ingrese un ADN de 6x6, separando cada fila por "," ejemplo:
+AGATCA, GATTCA, CAACAT, GAGCTA, ATTGCG, CTGTTC
+
+Ingrese el ADN: AGATCA, GATTCA, CAACAT, GAGCTA, ATTGCG, CTGTTC
+Ingrese el nombre para su ADN: mutante1
+```
+El ADN ingresado se imprimirá en pantalla:
+```
+Su ADN: 
+        [    A    G    A    T    C    A    ]
+        [    G    A    T    T    C    A    ]
+        [    C    A    A    C    A    T    ]
+        [    G    A    G    C    T    A    ]
+        [    A    T    T    G    C    G    ]
+        [    C    T    G    T    T    C    ]
+```
+Paso 2: Detectar Mutantes
+Seleccione la opción `2` para detectar mutantes en el ADN ingresado.
+```
+1. Ingresar ADN
+2. Detectar mutantes
+3. Crear mutante
+4. Sanar mutantes
+5. Imprimir ADN
+6. Salir
+
+Ingrese una opcion: 2
+Ingrese el nombre del ADN: mutante1
+```
+El programa detectará y mostrará si hay mutantes en el ADN:
+```
+False
+```
+Paso 3: Crear Mutante
+Seleccione la opción `3` para crear un mutante en el ADN ingresado.
+```
+1. Ingresar ADN
+2. Detectar mutantes
+3. Crear mutante
+4. Sanar mutantes
+5. Imprimir ADN
+6. Salir
+
+Ingrese una opcion: 3
+Ingrese el nombre del ADN: mutante1
+```
+Ingrese la base nitrogenada, la orientación de la mutación y la posición inicial:
+```
+Ingrese la base nitrogenada a mutar
+(A) Adenina (C) Citosina (G) Guanina (T) Timina
+A
+
+Ingrese la orientacion de la mutacion
+Horizontal, Vertical, Diagonal
+horizontal
+
+Ingrese la fila de la mutacion: 1
+Ingrese la columna de la mutacion: 1
+```
+El ADN mutado se imprimirá en pantalla:
+```
+Mutante creado
+Su ADN: 
+        [    A    A    A    A    C    A    ]
+        [    G    A    T    T    C    A    ]
+        [    C    A    A    C    A    T    ]
+        [    G    A    G    C    T    A    ]
+        [    A    T    T    G    C    G    ]
+        [    C    T    G    T    T    C    ]
+```
+Paso 4: Sanar Mutantes
+Seleccione la opción `4` para sanar mutantes en el ADN ingresado.
+```
+1. Ingresar ADN
+2. Detectar mutantes
+3. Crear mutante
+4. Sanar mutantes
+5. Imprimir ADN
+6. Salir
+
+Ingrese una opcion: 4
+Ingrese el nombre del ADN: mutante1
+```
+El ADN sanado se imprimirá en pantalla:
+```
+Mutante sanado
+Su ADN: 
+        [    T    G    C    T    G    C    ]
+        [    A    T    G    C    T    G    ]
+        [    C    G    A    T    G    C    ]
+        [    T    G    C    T    G    C    ]
+        [    A    T    G    C    T    G    ]
+        [    C    G    A    T    G    C    ]
+```
+Paso 5: Imprimir ADN
+Seleccione la opción `5` para imprimir el ADN ingresado.
+```
+1. Ingresar ADN
+2. Detectar mutantes
+3. Crear mutante
+4. Sanar mutantes
+5. Imprimir ADN
+6. Salir
+
+Ingrese una opcion: 5
+Ingrese el nombre del ADN: mutante1
+```
+El ADN se imprimirá en pantalla:
+```
+                Mutantes horizontales: 0
+                Mutantes verticales: 0
+                Mutantes diagonales: 0
+```
